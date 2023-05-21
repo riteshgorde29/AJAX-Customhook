@@ -1,0 +1,33 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+  // prepare content 
+  
+ 
+  class Hellow extends React.Component {
+      render(){
+        return <h1>Hellow World</h1>
+      }
+  }
+
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<Hellow />)
+</script>
+
+
+

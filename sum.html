@@ -1,0 +1,56 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+    const App=()=>{
+        const no1Ref=React.useRef()
+        const no2Ref=React.useRef()
+        const resRef=React.useRef()
+        const sum=()=>{
+          let n1=no1Ref.current.value
+          let n2=no2Ref.current.value
+          if(isNaN(n1)){
+            alert('Please Enter valid n1 value')
+            return
+          }
+          if(isNaN(n2)){
+            alert('Please Enter valid n2 value')
+            return
+          }
+          let sum=parseInt(n1)+parseInt(n2)
+          resRef.current.innerText=sum
+        }
+        return <div>
+               <p>
+                <b>No1:</b><input ref={no1Ref} />
+               </p>
+               <p>
+                <b>No2:</b><input ref={no2Ref} />
+               </p>
+               <p>
+                <button onClick={sum}>sum</button>
+               </p>
+               <h1>Result :<span ref={resRef}></span> </h1>
+            </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

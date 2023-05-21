@@ -1,0 +1,98 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+const Table=(props)=>{
+   const {headers,data, columns} =props
+   return  <table border='1px'>
+          <thead>
+              <tr>
+                 {
+                  headers.map((v,i)=>{
+                     return  <th key={i}>{v}</th>
+                  })
+                 }
+              
+               </tr>
+          </thead>
+    
+          <tbody>
+            {
+               data.map((obj,ind)=>{
+                  return <tr key={ind}>
+                         {
+                           columns.map((col,i)=>{
+                              return <td key={i}>{obj[col]}</td>
+                           })
+                         }
+                     </tr>
+               })
+            }
+           
+          </tbody>
+        </table>
+  }
+  const  App= ()=>{
+      const [headers,setHeaders]=React.useState([])
+      const [data,setData]=React.useState([])
+      const [columns,setColumns]=React.useState([])
+
+      const fnGetPosts=()=>{
+         fetch('https://jsonplaceholder.typicode.com/posts',{
+            method:'get'
+         })
+         .then((res)=>{
+            return res.json()
+         })
+         .then((result)=>{
+            setData(result)
+            setHeaders(['ID','POST TITLE','BODY'])
+            setColumns(['id','title','body'])
+         })
+         .catch((res)=>{
+            console.log(res)
+         })
+      }
+      const fnGetPhotos=async ()=>{
+         const res=  await fetch('https://jsonplaceholder.typicode.com/photos')
+          const result=  await res.json()
+          setData(result)
+          setHeaders(['ID','URL','THUMBNAIL URL'])
+          setColumns(['id','url','thumbnailUrl'])
+      }
+      return <div>
+            <p>
+                 <button onClick={fnGetPosts}>Get Posts</button>
+                 <button onClick={fnGetPhotos}>Get Photos</button>
+            </p>
+
+            <Table 
+               headers={headers}
+               data={data}
+               columns={columns}
+            />
+           
+
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

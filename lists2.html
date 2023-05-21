@@ -1,0 +1,36 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const  App= ()=>{
+      const players=['Sachin','Dhoni','Kohli','uv','Panth']
+      return <select>
+        {
+          players.map((v,i)=>{
+               return  <option key={i}>{v}</option>
+          })
+        }
+        </select>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

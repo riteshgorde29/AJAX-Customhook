@@ -1,0 +1,52 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const  App= ()=>{
+      const [name,setName]=React.useState('Sachin')
+      const [data,setData]=React.useState([])
+      const [isLoading,fnUpdateData]=React.useTransition()
+      const fnClick=()=>{
+        setName('Kohli')
+        fnUpdateData(()=>{
+            let _data=[]
+            for(let i=0;i<=30000;i++){
+                _data.push(`Line no ${i+1}`)
+            }
+            setData(_data)
+        })
+      }
+      return <div>
+         
+           <h3>{name}</h3>
+           {
+            isLoading ? 'Loading...' :
+           data.map((v,i)=>{
+                return <div key={i}>{v}</div>
+            })
+           }
+           <button onClick={fnClick}>click</button>
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

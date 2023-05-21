@@ -1,0 +1,35 @@
+1. uninstall node 
+
+2. install NVM s/w 
+
+3. check cmd> nvm 
+
+4. install specific version 
+
+      nvm install 16.2.0
+      nvm install 18.7.0
+
+5. get all installed node versions
+
+      > nvm ls
+      
+       16.2.0
+       18.7.0
+
+6. Swith to 16
+    
+      > nvm use 16.2.0
+
+7. verify the node version 
+
+
+      > node -v 
+
+8. Uninstall specific node version 
+
+      >nvm uninstall 16.2.0
+
+
+
+
+

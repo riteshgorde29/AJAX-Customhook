@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="bootstrap.css">
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+  const Input=(props)=>{
+    const {text,type,errorMsg}=props
+    return <div className='row mb-4'>
+               <div className='col-sm-5 text-end'>
+                  <b>{text}:</b>
+               </div>
+               <div className='col-sm-3'>
+                 <input className='form-control' type={type} />
+               </div> 
+               <div className='col-sm-4'>
+                  <b className='text-danger'>{errorMsg}</b>
+               </div>
+           </div>
+  }
+  const  App= ()=>{
+     const inputControls=[
+        {
+            lbl:'User Name',
+            type:'text',
+            error:'Please Enter User ID'
+        },
+        {
+            lbl:'Password',
+            type:'password',
+            error:'Please Enter Password'
+        }
+     ]
+     return <div>
+           <h2 className="text-center bg-primary pt-3 pb-3 text-white mb-5">Login</h2>
+           <div className='container-fluid'>
+            {
+                inputControls.map(({lbl,type,error},ind)=>{
+                    // const {lbl,type,errorMsg} =obj
+                    return <Input text={lbl} type={type} errorMsg={error} />
+                }) 
+            }
+           <div className='row mb-4'>
+               <div className="offset-sm-5 col-sm-7">
+                  <button className='btn btn-primary'>Login</button>
+               </div>
+           </div>
+           </div>
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

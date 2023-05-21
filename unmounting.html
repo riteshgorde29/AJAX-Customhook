@@ -1,0 +1,53 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+    const  A= ()=>{
+
+     React.useEffect(()=>{
+        return ()=>{
+          console.log('A component is going to unmount')
+         }
+     },[])
+
+     React.useEffect(()=>{
+      console.log('A component mounted')
+     },[])
+     
+     return <div>
+        <h1>A</h1> 
+        
+       </div>
+   }
+  const  App= ()=>{
+      const [isShow,setIsShow]=React.useState(false)
+      const fnChange=(eve)=>{
+        setIsShow(eve.target.checked)
+      }
+      return <div>
+         <h1>App</h1> 
+          <input onChange={fnChange} type='checkbox' />Toggle 
+          {isShow && <A />}
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

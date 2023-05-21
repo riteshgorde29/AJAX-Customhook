@@ -1,0 +1,51 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const  App= ()=>{
+      const [cnt,setCnt]=React.useState(0)
+      const [name,setName]=React.useState('Sachin')
+
+      const fnCheckEvenOrOdd=React.useMemo(()=>{
+           console.log('5k lines')
+           return cnt % 2==0 ? 'Even' : 'ODD'
+      },[cnt])
+
+      const fnClick=()=>{
+        setCnt(cnt+1) 
+      }
+
+      const fnToggle=()=>{
+          setName(name=='Sachin' ? 'Dhoni' : 'Sachin')
+      }
+
+      return <div>
+            <h1>{cnt}</h1>
+            <button onClick={fnClick}>Increment</button>
+            <h3>{fnCheckEvenOrOdd}</h3>
+            <h1>{name}</h1>
+            <button onClick={fnToggle}>Toggle Name</button>
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

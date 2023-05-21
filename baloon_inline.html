@@ -1,0 +1,62 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+ #board{
+    border: 1px solid red;
+    height: 300px;
+    width: 300px;
+    display: inline-block;
+    position: relative;
+ }
+ .baloon{
+    border: 1px solid blue;
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute;
+ }
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+ const Baloon =(props)=>{
+     const {h,w,t,l} =props
+    return <div class='baloon' style={{height:h,width:w,top:t,left:l}}></div>
+ }
+
+
+
+   
+  const Board=()=>{
+     
+     return <div id='board'>
+            <Baloon h="50"   w="50"  t="40"  l="200" />
+            <Baloon h="100"   w="100"  t="110"  l="100" />
+            <Baloon h="70"   w="70"  t="220"  l="200"/>
+        </div>
+  }
+
+  const  App= ()=>{
+     
+      return <div id='app'>
+            <Board />
+        </div>
+    }
+
+    
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

@@ -1,0 +1,65 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const  App= ()=>{
+      const questions=[
+        {
+           'question':'Below which hook we use to get the reference ?',
+           'options':['useState','useEffect','useRef','useMemo'],
+           'type':'S',
+        },
+        {
+           'question':'Below which are block level elements?',
+           'options':['div','span','p','h1'],
+           'type':'M',
+        },
+        {
+           'question':'How many ways we can pass the data to the component while loading ?',
+           'options':['attributes','document','selectors','children'],
+           'type':'M',
+        },
+        {
+           'question':'Which menthod has define in class component to prepare content ?',
+           'options':['setState','forceupdate','render','none'],
+           'type':'S',
+        }
+      ]
+      return <div>
+        {
+            questions.map((obj,ind)=>{
+                const {question,options,type}=obj
+                return <div key={ind}>
+                       <h3>{ind+1}. {question}</h3>
+                       {options.map((v,i)=>{
+                          return <p key={i}><input name={ind} type={type =='S' ? 'radio' : 'checkbox'} />{v}</p>
+                       })}
+                    </div>
+            })
+        }
+
+        <p><button>Submit</button></p>
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

@@ -1,0 +1,41 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const  App= ()=>{
+      const [count,setCount]=React.useState(0)
+      console.log('Before mounting')
+      React.useEffect(()=>{
+        console.log('After mounting')
+      },[])
+      const fnClick=()=>{
+        setCount(count+1)
+      }
+      return <div>
+         <h1>Hellow World</h1> 
+         <h3>{count}</h3>
+         <button onClick={fnClick}>Increment Count</button>
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

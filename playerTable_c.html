@@ -1,0 +1,50 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+class App extends React.Component{
+  render(){
+      return <table border='2px'>
+                <thead>
+                    <tr>
+                        <th>Name</th> 
+                        <th>Rno</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>S1</td>
+                        <td>1</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>S2</td>
+                        <td>2</td>
+                        <td>Hyd</td>
+                    </tr>
+                    
+                </tbody>
+            </table> 
+    }
+}
+
+    //container reference 
+   const container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+

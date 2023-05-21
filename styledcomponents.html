@@ -1,0 +1,30 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/styled-components/5.3.10/styled-components.min.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const  Hellow= ()=>{
+      return <h1>Hellow World</h1> 
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<Hellow />)
+</script>
+
+
+

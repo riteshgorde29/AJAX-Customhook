@@ -1,0 +1,41 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const TextBox=React.forwardRef((props,myRef)=>{
+    return <div>
+         Name: <input ref={myRef} />
+      </div>
+  })
+  const  App= ()=>{
+      const nameRef=React.useRef()
+      const fnClick=()=>{
+        nameRef.current.value='Sachin'
+      }
+      return <div>
+           <TextBox ref={nameRef} n1={10} n2={20} />
+           <button onClick={fnClick}>click</button>
+        </div>
+  }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

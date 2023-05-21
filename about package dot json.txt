@@ -1,0 +1,75 @@
+
+package.json
+
+dependencies:{
+package-name:package-version
+react:18.2.0(Major.Minor.Patch)
+}
+
+Tilde (~) notation:
+
+It is used for automatically updating the patch updates.
+Tilde ~ notation freezes the major version and minor version
+
+The ~18.2.0 will update all the future patch updates. We have to write just ~18.2.0 and all the next patch update dependencies. For example, 18.2.1, 18.2.2, 18.2.3……………18.2.x.
+
+Caret (^) notation: 
+
+It is used for automatically updating the minor updates along with patch updates.
+
+The ^1.2.4 will update all the future Minor and patch updates, for example, ^1.2.4 will automatically change the dependency to 1.x.x if any update occurs.
+
+install specific version: 
+
+npm i <packagename>@<version>
+
+npm i -g npm-check-updates
+
+ncu -u
+
+ncu -u -t patch
+
+ncu -u -t minor
+
+
+
+About NVM 
+
+NVM ---> Node Version Manager
+
+install nvm s/w 
+
+https://github.com/coreybutler/nvm-windows/releases (nvm-setup.zip)
+
+once installed 
+
+>nvm -v
+
+To install latest node js version
+
+>nvm install latest
+
+or 
+
+>nvm install lts
+
+Avaibale node version
+
+>nvm list available
+
+Install specific version 
+
+>nvm install 14.20.0
+
+
+Installed node versions
+
+>nvm list 
+
+To use specific node version
+
+>nvm use latest
+
+>nvm use lts
+
+>nvm use 14.20.0

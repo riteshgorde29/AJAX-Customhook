@@ -1,0 +1,99 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const  App= ()=>{
+      const playersData=[
+         {
+            name:'Sachin',
+            runs:20000
+         },
+         {
+            name:'Dhoni',
+            runs:15000
+         }
+      ]
+      const stdData=[
+         {
+            n:'S1',
+            r:1,
+            m:100
+         },
+         {
+            n:'S2',
+            r:2,
+            m:88
+         },
+         {
+            n:'S3',
+            r:3,
+            m:99
+         },
+      ]
+      return <div>
+        <table border='1px'>
+          <thead>
+              <tr>
+                 <th>Name</th>
+                 <th>Runs</th>
+               </tr>
+          </thead>
+          <tbody>
+              {
+              playersData.map((obj,ind)=>{
+                const {name,runs} =obj;
+                return <tr>
+                 <td>{name}</td>
+                 <td>{runs}</td>
+              </tr>
+              })
+              }
+             
+          </tbody>
+        </table>
+        <table border='1px'>
+          <thead>
+              <tr>
+                 <th>Std.Name</th>
+                 <th>Std.Rno</th>
+                 <th>Std.Marks</th>
+               </tr>
+          </thead>
+          <tbody>
+              {
+              stdData.map((obj,ind)=>{
+                const {n,r,m} =obj;
+                return <tr>
+                 <td>{n}</td>
+                 <td>{r}</td>
+                 <td>{m}</td>
+              </tr>
+              })
+              }
+             
+          </tbody>
+        </table>
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

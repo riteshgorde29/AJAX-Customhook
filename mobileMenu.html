@@ -1,0 +1,168 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+#header{
+    background: yellow;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+body{
+    margin: 0;
+}
+#footer{
+    background: yellow;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.menu{
+    text-align: right;
+    background: #e9ead9;
+    line-height: 40px;
+    position: sticky;
+    top: 0;
+    cursor: pointer;
+}
+.mobile-menu{
+    width: 150px;
+    display: inline-block;
+    height: 200px;
+    text-align: left;
+    padding: 10px;
+    background: #e9ead9;
+    cursor: pointer;
+    line-height: 40px;
+    position: absolute;
+    top: 72px;
+    transition: left 1s;
+}
+.mobile-menu > a{
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    display: block;
+}
+.menu > a{
+    margin-right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+.mobile-menu-btn{
+    position: absolute;
+    right: 0;
+    top: 72px;
+}
+.menu-active{
+    color:red !important
+}
+@media screen and (max-width:600px) {
+    #header{
+        font-size: 45px !important;
+    }
+}
+</style>
+
+<script type="text/babel">
+    // prepare content 
+const Contact=()=>{
+    return <h1>Contact Page</h1>
+  }
+  const Services=()=>{
+    return <h1>Services Page</h1>
+  }
+ const About=()=>{
+    return <h1>About Page</h1>
+  }
+  const Home=()=>{
+    return <h1>Home Page</h1>
+  }
+
+  const Menu =()=>{
+    const [myLeft,setMyLeft]=React.useState(-170)
+    const [menuItem,setMenuItem]=React.useState('home')
+    const [isMobileView, setIsMobileView]=React.useState(document.body.offsetWidth < 600 ? true:false )
+    let flag=true
+    let timeOutId;
+    window.addEventListener('resize',(eve)=>{
+        if(flag){
+            fnHandleResize()
+            flag=false
+        }
+        clearTimeout(timeOutId)
+        timeOutId=setTimeout(()=>{
+            fnHandleResize()
+        },1000)
+    })
+
+    const fnHandleResize=()=>{
+        const _width=document.body.offsetWidth
+        setIsMobileView(_width > 600 ? false : true)
+    }
+
+    const fnClick=(eve)=>{
+        eve.stopPropagation()
+        const {id,nodeName} =eve.target
+        if(nodeName == 'DIV')return;
+        setMenuItem(id)
+        if(isMobileView){
+            setMyLeft(-170)
+        }
+    }
+    const fnMobileMenuBtnClick=()=>{
+        setMyLeft(myLeft== 0 ? -170 : 0)
+    }
+   
+    
+    return <div>
+            {isMobileView && <button onClick={fnMobileMenuBtnClick} className="mobile-menu-btn">Mobie Menu</button>}
+           <div onClick={fnClick} style={{left:myLeft}} className={isMobileView ? 'mobile-menu' : 'menu'}>
+                <a id='home' className={menuItem == 'home' && 'menu-active'} >Home</a>
+                <a id='about' className={menuItem == 'about' && 'menu-active'} >About</a>
+                <a id='contact' className={menuItem == 'contact' && 'menu-active'} >Contact</a>
+                <a id='service' className={menuItem == 'service' && 'menu-active'} >Service</a>
+            </div>
+           {menuItem == 'home' && <Home />}
+           {menuItem == 'about' && <About />}
+           {menuItem == 'contact' && <Contact />}
+           {menuItem == 'service' && <Services />}
+          
+         </div>
+  }
+  const Header=()=>{
+    return <div id="header">My First React WebPage</div>
+  }
+
+  const Footer=()=>{
+        return <div id='footer'>&copy; rights belongs to me.</div>
+  }
+  const  App= ()=>{
+      return <div>
+             <Header />
+             <Menu />
+             <Footer />
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

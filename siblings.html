@@ -1,0 +1,60 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+  const A=(props)=>{
+    const nameRef=React.useRef()
+    const fnClick=()=>{
+        const name=nameRef.current.value;
+        props.fn(name)
+    }
+    return <div>
+          <h1>A</h1>
+          <div>
+                  <p>
+                      <b>Name:</b><input ref={nameRef}  />
+                  </p>
+                  <button onClick={fnClick} >click</button>
+            </div>
+        </div>
+  }
+
+  const B=(props)=>{
+    return <h1>B:{props.name} </h1>
+  }
+
+ 
+ 
+  const  App= ()=>{
+      const [data,setData]=React.useState('Not Yet received the data from A')
+      const f2=(name)=>{
+        setData(name)
+      }
+    
+      return <div>
+            <h1>App </h1>
+            <A fn={f2} />
+            <B name={data} />
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

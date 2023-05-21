@@ -1,0 +1,37 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const  App= ()=>{
+      const [name,setName]=React.useState('Sachin')
+     
+      const fnClick=()=>{
+        setName('Dhoni')
+      }
+      return <div>
+           <h1>{name}</h1> 
+           <button onClick={fnClick}>Change to Dhoni</button>
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

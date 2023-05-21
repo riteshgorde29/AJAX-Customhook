@@ -1,0 +1,96 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+  const Table=(props)=>{
+   const {headers,data, columns} =props
+   return  <table border='1px'>
+          <thead>
+              <tr>
+                 {
+                  headers.map((v,i)=>{
+                     return  <th key={i}>{v}</th>
+                  })
+                 }
+              
+               </tr>
+          </thead>
+    
+          <tbody>
+            {
+               data.map((obj,ind)=>{
+                  return <tr key={ind}>
+                         {
+                           columns.map((col,i)=>{
+                              return <td key={i}>{obj[col]}</td>
+                           })
+                         }
+                     </tr>
+               })
+            }
+           
+          </tbody>
+        </table>
+  }
+  const  App= ()=>{
+      const playersData=[
+         {
+            name:'Sachin',
+            runs:20000
+         },
+         {
+            name:'Dhoni',
+            runs:15000
+         }
+      ]
+      const stdData=[
+         {
+            n:'S1',
+            r:1,
+            m:100
+         },
+         {
+            n:'S2',
+            r:2,
+            m:88
+         },
+         {
+            n:'S3',
+            r:3,
+            m:99
+         },
+      ]
+      return <div>
+       
+         <Table 
+             headers={['Name','Runs']}
+             data={playersData} 
+             columns={['name','runs']}
+            />
+         <Table 
+             headers={['Std.Name','Std.Rno','Std.Marks']} 
+             data={stdData} 
+             columns={['n','r','m']}
+            />
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

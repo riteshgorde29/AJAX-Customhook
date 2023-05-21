@@ -1,0 +1,108 @@
+1. open command prompt
+
+2. check npm 
+
+   >npm    
+
+      Y
+      N: install node js s/w
+
+3. check express
+
+   >express 
+  
+
+4. Y--> 
+   N-->
+        npm i -g express
+        npm i -g express-generator
+
+5. close command propmpt and open new, and check express
+
+6. If express there, go to your workspace folder
+
+7. create new folder(questions-server) , open command prompt into that folder
+
+  questions-server>
+
+8. type express and enter
+
+  questions-server>express
+
+9. Now you can see the application releated files and folder inside questions-server folder
+
+10. download libs 
+
+  questions-server>npm i
+
+11. run application 
+
+    questions-server>npm start
+
+
+
+Run Mongo in local and connect with mongo db compass
+---------------------------------------------------
+
+1. install mongo db s/w and mongo compass tool
+
+2. open command inside mongodb installation folder 
+
+   C:\Program Files\MongoDB\Server\5.0\bin>
+
+3. create one fodler in your machine to store mongodb data in local and copy the path 
+   
+   F:\nit-8am
+
+4. in your opend command prompt(2nd step)
+
+C:\Program Files\MongoDB\Server\5.0\bin>mongod.exe --dbpath F:\nit-8am
+
+5. Now mongodb server should up and run in this location 
+
+  mongodb://localhost:27017
+
+6. open mongodb compass and connect to this  mongodb://localhost:27017
+
+
+Run Mongo in cloud and connect with mongodb compass
+---------------------------------------------------
+
+
+1. create an account in https://account.mongodb.com/
+
+2. login into mongodb account 
+
+3. Create a new project 
+
+4. build your database 
+
+    1. choose free tier
+
+    2. choose provider (aws)
+
+    3. add cluster name 
+
+    4. add user name 
+
+    5. add ip address(0.0.0.0/0)
+
+    6. submit 
+
+5. to get the mongodb server url , 
+
+     1. click on connect button 
+
+     2. choose connect using mongodb compass 
+
+     3. copy the url and replace <password> with your password. 
+
+     mongodb+srv://u1:<password>@8am-nit-cluster.xicucwz.mongodb.net/test
+
+     mongodb+srv://u1:p1@8am-nit-cluster.xicucwz.mongodb.net/test
+
+6. open mongodb compass and connect to this  mongodb+srv://u1:p1@8am-nit-cluster.xicucwz.mongodb.net/test  
+
+
+
+

@@ -1,0 +1,47 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    const useIncrementCnt=(init)=>{
+        const [cnt,setCnt]=React.useState(init)
+        const fnIncrement=()=>{
+            setCnt(cnt+1)
+        }
+        return [cnt,fnIncrement]
+    }
+    // prepare content 
+    const  ButtonClick= ()=>{
+      const [cnt,fnIncrement]=useIncrementCnt(0)
+      return <button onClick={fnIncrement}>He clicked me {cnt} time(s)</button> 
+    }
+    
+    const  TextHover= ()=>{
+        const [cnt,fnIncrement]=useIncrementCnt(0)
+      return <h1 onMouseOver={fnIncrement}>He Hover me {cnt} time(s)</h1> 
+    }
+  const  App= ()=>{
+      return <div>
+        <ButtonClick />
+        <TextHover />
+        </div> 
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+

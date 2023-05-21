@@ -1,0 +1,113 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div id="root"></div>
+
+<style>
+
+</style>
+
+<script type="text/babel">
+    // prepare content 
+
+  const  App= ()=>{
+
+      const init={
+        n1:0,
+        n2:0,
+        result:0
+      }
+
+      const reducer=(state,action)=>{
+           switch(action.type){
+            case 'N1_UPDATE':
+                state={
+                    ...state,
+                    n1:action.payload
+                }
+                break;
+            case 'N2_UPDATE':
+            state={
+                    ...state,
+                    n2:action.payload
+                }
+                break;
+            case 'RESULT_UPDATE':
+            state={
+                    ...state,
+                    result:action.payload
+                }
+                break;
+           }
+           return state;
+      }
+
+      const [state,dispatch]=React.useReducer(reducer,init);
+
+
+
+      const f1=(eve)=>{
+        dispatch({
+            type:'N1_UPDATE',
+            payload:Number(eve.target.value)
+        })
+      }
+      const f2=(eve)=>{
+        dispatch({
+            type:'N2_UPDATE',
+            payload:Number(eve.target.value)
+        })
+     }
+
+     const fnSum=()=>{
+        dispatch({
+            type:'RESULT_UPDATE',
+            payload:state.n1+state.n2
+        })
+     }
+
+     const fnSub=()=>{
+        dispatch({
+            type:'RESULT_UPDATE',
+            payload:state.n1-state.n2
+        })
+     }
+
+     const fnMul=()=>{
+        dispatch({
+            type:'RESULT_UPDATE',
+            payload:state.n1*state.n2
+        })
+     }
+
+
+      return <div>
+            <p>
+                No1: <input  onChange={f1} />
+            </p>
+            <p>
+                No2: <input onChange={f2} />
+            </p>
+
+            <p>
+                <button onClick={fnSum}>sum</button><button onClick={fnSub}>sub</button><button  onClick={fnMul}>mul</button>
+            </p>
+            <h3>{state.result}</h3>
+
+
+        </div>
+    }
+
+    //container reference 
+   var container= ReactDOM.createRoot(document.getElementById('root'))
+
+    // render content inside the container 
+   
+   container.render(<App />)
+</script>
+
+
+
